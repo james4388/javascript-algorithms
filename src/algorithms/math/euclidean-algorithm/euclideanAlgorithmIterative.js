@@ -11,10 +11,14 @@ export default function euclideanAlgorithmIterative(originalA, originalB) {
 
   // Subtract one number from another until both numbers would become the same.
   // This will be out GCD. Also quit the loop if one of the numbers is zero.
-  while (a && b && a !== b) {
-    [a, b] = a > b ? [a - b, b] : [a, b - a];
+  // a && b && a !== b
+  // To make algorithm work faster instead of subtracting one number from the other
+  // we may use modulo operation. 
+  // b !== 0
+  while (b !== 0) {
+    [a, b] = [b, a % b];
   }
 
   // Return the number that is not equal to zero since the last subtraction (it will be a GCD).
-  return a || b;
+  return a;
 }
